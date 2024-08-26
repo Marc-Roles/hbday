@@ -13,12 +13,30 @@ except IndexError:
     command = None
 
 rainbow = [
-    '\033[31m',
-    '\033[32m',
-    '\033[33m',
-    '\033[34m',
-    '\033[35m',
-    '\033[36m'
+    '\033[38;5;196m',  # Red
+    '\033[38;5;202m',  # Red-Orange
+    '\033[38;5;208m',  # Orange
+    '\033[38;5;214m',  # Yellow-Orange
+    '\033[38;5;220m',  # Yellow
+    '\033[38;5;226m',  # Light Yellow
+    '\033[38;5;190m',  # Pale Yellow-Green
+    '\033[38;5;154m',  # Light Green
+    '\033[38;5;118m',  # Green
+    '\033[38;5;82m',   # Teal-Green
+    '\033[38;5;46m',   # Cyan
+    '\033[38;5;47m',   # Light Cyan
+    '\033[38;5;48m',   # Pale Blue-Cyan
+    '\033[38;5;33m',   # Light Blue
+    '\033[38;5;27m',   # Blue
+    '\033[38;5;21m',   # Indigo
+    '\033[38;5;57m',   # Violet-Indigo
+    '\033[38;5;93m',   # Violet
+    '\033[38;5;129m',  # Magenta-Violet
+    '\033[38;5;165m',  # Magenta
+    '\033[38;5;201m',  # Pink
+    '\033[38;5;198m',  # Light Pink
+    '\033[38;5;197m',  # Rose
+    '\033[38;5;196m'   # Red
 ]
 
 def clear_screen():
@@ -49,7 +67,7 @@ def ascii_art(msg):
             color = rainbow[i % len(rainbow)]
             print('\033[1m' + color + line)
 
-        time.sleep(0.3)
+        time.sleep(0.05)
 
 def main():
     if command is None:
