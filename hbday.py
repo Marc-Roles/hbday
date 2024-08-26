@@ -3,6 +3,7 @@
 import sys
 import pyfiglet
 import time
+import os
 
 try:
     if len(sys.argv) > 2:
@@ -35,16 +36,15 @@ rainbow = [
     '\033[38;5;165m',  # Magenta
     '\033[38;5;201m',  # Pink
     '\033[38;5;198m',  # Light Pink
-    '\033[38;5;197m',  # Rose
-    '\033[38;5;196m'   # Red
+    '\033[38;5;197m'   # Rose
 ]
 
 def clear_screen():
-    print('\033[2J', end='')  # Clear the entire screen
-    print('\033[H', end='')  # Move the cursor to the top-left corner
+    print('\033[2J', end='')
+    print('\033[H', end='') 
 
 def move_cursor_to_top():
-    print('\033[H', end='')  # Move the cursor to the top-left corner of the terminal
+    print('\033[H', end='')
 
 def shift_array(arr):
     last_item = arr.pop() 
@@ -53,15 +53,18 @@ def shift_array(arr):
 
 def ascii_art(msg):
     global rainbow
-    ascii_art = pyfiglet.figlet_format(msg)
+
+    terminal_width = os.get_terminal_size().columns
+
+    ascii_art = pyfiglet.figlet_format(msg, width=terminal_width)
     art_lines = ascii_art.splitlines()
 
-    clear_screen()  # Clear the screen once at the beginning
+    clear_screen()
 
     while True:
         rainbow = shift_array(rainbow)
 
-        move_cursor_to_top()  # Move cursor to the top before printing
+        move_cursor_to_top()
 
         for i, line in enumerate(art_lines):
             color = rainbow[i % len(rainbow)]
