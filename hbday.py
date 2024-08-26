@@ -67,10 +67,12 @@ def ascii_art(msg):
         move_cursor_to_top()
 
         for i, line in enumerate(art_lines):
+            padding = (terminal_width - len(line)) // 2
             color = rainbow[i % len(rainbow)]
-            print('\033[1m' + color + line)
+            print(' ' * padding + '\033[1m' + color + line)
 
         time.sleep(0.05)
+
 
 def main():
     if command is None:
