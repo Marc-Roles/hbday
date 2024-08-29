@@ -114,6 +114,7 @@ def main():
     try:
         ascii_art(msg)
     except KeyboardInterrupt:
+        clean_screen()
         pass
 
 if __name__ == "__main__": 
