@@ -7,7 +7,6 @@ setup(
     py_modules=['hbday'],
     install_requires=[
         'pyfiglet', # This ensures pyfiglet is installed
-        'pyautogui',  
     ],
     entry_points={
         'console_scripts': [

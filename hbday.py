@@ -4,7 +4,6 @@ import sys
 import pyfiglet
 import time
 import os
-import random
 
 try:
     if len(sys.argv) > 2:
