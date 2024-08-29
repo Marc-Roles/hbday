@@ -1,17 +1,9 @@
 #!/usr/bin/env python
 
-import sys
 import pyfiglet
 import time
 import os
-
-try:
-    if len(sys.argv) > 2:
-        print("Usage: hbday \"[message]\"")
-        sys.exit()
-    command = sys.argv[1]
-except IndexError:
-    command = None
+import platform
 
 shrek = """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -70,6 +62,12 @@ rainbow = [
 def resize_screen():
     os.system('printf "\e[8;36;110t"')
 
+def clean_screen():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 def clear_screen():
     print('\033[H', end='')
 
@@ -108,12 +106,10 @@ def ascii_art(msg):
 
 def main():
 
+    clean_screen()
     resize_screen()
 
-    if command is None:
-        msg = "Happy Birthday Walter!"
-    else: 
-        msg = command
+    msg = "Happy Birthday Walter!"
 
     try:
         ascii_art(msg)
